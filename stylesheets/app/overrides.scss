@@ -1093,6 +1093,32 @@ tr.topic-list-item-separator,
       text-shadow: 0 1px 6px rgb(0 0 0 / 55%);
     }
 
+    .card-row:first-child > .usercard-controls,
+    .card-row:first-child > :has(.usercard-controls) {
+      grid-column: 1 / -1;
+      width: 100%;
+    }
+
+    .usercard-controls {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap;
+      gap: var(--mf-space-2);
+      margin: 0;
+      padding: 0;
+
+      > * {
+        flex: 1 1 0;
+        min-width: 0;
+        margin: 0;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
     .metadata {
       margin-top: var(--mf-space-3);
       gap: 2px var(--mf-space-3);
