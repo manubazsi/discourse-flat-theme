@@ -667,3 +667,22 @@
     }
   }
 }
+
+#reply-control .composer-popup {
+  box-sizing: border-box;
+  height: auto !important;
+  max-height: min(70vh, 480px) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+}
+
+#reply-control .composer-popup-container {
+  max-height: calc(100% - 96px);
+}
+
+.sidebar-wrapper {
+  height: calc(100dvh - var(--header-offset, 0px)) !important;
+  max-height: none !important;
+  bottom: 0 !important;
+}
