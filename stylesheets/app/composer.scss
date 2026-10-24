@@ -739,9 +739,7 @@
       flex: 1 1 auto;
       flex-direction: column;
       min-height: 0;
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      -webkit-overflow-scrolling: touch;
+      overflow: clip;
     }
 
     .composer-fields {
@@ -799,19 +797,24 @@
       box-shadow: none !important;
     }
 
+    .d-editor-container:has(.d-editor-textarea-column:focus-within)
+      .title-and-category {
+      display: none;
+    }
+
     .d-editor-textarea-column {
       position: relative;
       display: flex;
-      flex: 1 0 160px;
+      flex: 1 1 auto;
       flex-direction: column;
-      min-height: 160px;
-      contain: layout;
+      min-height: 96px;
+      overflow: clip;
     }
 
     .d-editor-textarea-wrapper {
       position: relative !important;
       inset: auto !important;
-      contain: layout;
+      overflow: clip;
       display: flex;
       flex: 1 1 auto;
       flex-direction: column;
