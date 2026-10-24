@@ -1,20 +1,13 @@
-import Component from "@glimmer/component";
-import { service } from "@ember/service";
 import { apiInitializer } from "discourse/lib/api";
-import dBoundAvatarTemplate from "discourse/ui-kit/helpers/d-bound-avatar-template";
-
-class ComposerAvatar extends Component {
-  @service currentUser;
-
-  <template>
-    {{#if this.currentUser}}
-      <div class="mf-composer-avatar">
-        {{dBoundAvatarTemplate this.currentUser.avatar_template "large"}}
-      </div>
-    {{/if}}
-  </template>
-}
 
 export default apiInitializer((api) => {
-  api.renderInOutlet("composer-fields", ComposerAvatar);
+  const user = api.getCurrentUser();
+  if (!user?.avatar_template) {
+    return;
+  }
+  const url = user.avatar_template.replace("{size}", "120");
+  document.documentElement.style.setProperty(
+    "--mf-user-avatar",
+    `url("${url}")`
+  );
 });
