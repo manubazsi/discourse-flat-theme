@@ -693,7 +693,7 @@
     flex-direction: column;
     box-sizing: border-box;
     padding: 0 !important;
-    overflow: hidden;
+    overflow: visible;
     background: var(--mf-surface);
 
     .grippie {
@@ -804,20 +804,40 @@
       padding: 0 var(--mf-space-3);
     }
 
-    .d-editor-textarea-wrapper {
+    .d-editor-textarea-wrapper,
+    .d-editor-preview-wrapper {
+      position: relative !important;
+      inset: auto !important;
+      display: flex;
       flex: 1 1 auto;
+      flex-direction: column;
+      width: 100%;
       min-height: 120px;
+      margin: 0;
+      overflow: hidden;
       background: transparent;
     }
 
     .d-editor-input {
+      position: static !important;
+      inset: auto !important;
+      box-sizing: border-box;
+      flex: 1 1 auto;
+      width: 100% !important;
+      height: auto !important;
       min-height: 120px;
+      max-height: none;
+      margin: 0;
       padding: var(--mf-space-3) 0 !important;
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
       font-size: 17px;
       line-height: 1.5;
       background: transparent !important;
       border-radius: 0;
       box-shadow: none !important;
+      resize: none;
     }
 
     .d-editor-button-bar {
