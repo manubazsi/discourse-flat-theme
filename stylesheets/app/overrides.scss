@@ -1039,11 +1039,22 @@ tr.topic-list-item-separator,
     }
 
     .user-card-avatar,
-    .card-huge-avatar {
+    .user-card-avatar a,
+    .user-card-avatar .avatar,
+    .card-huge-avatar,
+    .card-huge-avatar a,
+    .card-huge-avatar .avatar {
       position: static !important;
       inset: auto !important;
+      top: auto !important;
       transform: none !important;
+      translate: none !important;
       margin: 0 !important;
+    }
+
+    .user-card-avatar,
+    .card-huge-avatar {
+      align-self: center;
       flex: 0 0 auto;
     }
 
