@@ -800,13 +800,18 @@
     }
 
     .d-editor-textarea-column {
+      position: relative;
       display: flex;
       flex: 1 0 160px;
       flex-direction: column;
       min-height: 160px;
+      contain: layout;
     }
 
     .d-editor-textarea-wrapper {
+      position: relative !important;
+      inset: auto !important;
+      contain: layout;
       display: flex;
       flex: 1 1 auto;
       flex-direction: column;
@@ -835,9 +840,12 @@
     }
 
     .d-editor-input {
+      position: static !important;
+      inset: auto !important;
       flex: 1 1 auto;
       box-sizing: border-box;
-      width: 100%;
+      width: 100% !important;
+      height: auto !important;
       min-height: 0;
       padding: var(--mf-space-3) 0 !important;
       overflow-y: auto;
