@@ -291,7 +291,7 @@
   border: 0 !important;
   box-shadow: none !important;
   border-radius: var(--mf-radius-2xl) !important;
-  background: var(--mf-panel);
+  background-color: var(--mf-panel);
   overflow: visible;
 
   .card-content {
@@ -962,4 +962,30 @@ tr.topic-list-item-separator,
 #whos-online,
 .whos-online-container {
   display: none !important;
+}
+
+#user-card:not(:empty),
+.user-card:not(:empty),
+#group-card:not(:empty),
+.group-card:not(:empty) {
+  padding: 0 !important;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .card-content {
+    margin: 0 !important;
+    border-radius: inherit;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--secondary) 35%, transparent) 0,
+      color-mix(in srgb, var(--secondary) 80%, transparent) 55%,
+      var(--secondary) 100%
+    ) !important;
+  }
+
+  .card-row:first-child {
+    padding-top: var(--mf-space-4);
+  }
 }
