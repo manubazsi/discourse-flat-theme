@@ -689,8 +689,6 @@
 
 @include viewport.until(md) {
   #reply-control.open {
-    display: flex;
-    flex-direction: column;
     box-sizing: border-box;
     padding: 0 !important;
     overflow: visible;
@@ -700,15 +698,10 @@
       display: none !important;
     }
 
-    :is(
-        :has(> .composer-fields),
-        :has(> .d-editor-container),
-        :has(> .d-editor),
-        :has(> .submit-panel)
-      ) {
-      display: flex !important;
+    .reply-area {
+      display: flex;
       flex-direction: column;
-      flex: 1 1 auto;
+      height: 100%;
       min-height: 0;
       padding: 0 !important;
     }
@@ -727,30 +720,48 @@
       font-weight: var(--mf-weight-semibold);
     }
 
-    .composer-fields {
-      position: static !important;
-      flex: 0 0 auto;
-      height: auto !important;
+    .wmd-controls {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
       min-height: 0;
-      max-height: none !important;
+    }
+
+    .wmd-controls > .d-editor {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .d-editor-container {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .composer-fields {
+      display: flex;
+      flex: 0 0 auto;
+      flex-direction: column;
+      gap: var(--mf-space-2);
+      height: auto;
       margin: 0;
       padding: var(--mf-space-3) var(--mf-space-3) 0;
-      overflow: visible;
     }
 
     .title-and-category {
-      position: static !important;
-      display: flex !important;
-      flex-flow: row wrap;
+      display: flex;
+      flex-flow: row nowrap;
       gap: var(--mf-space-2);
       width: 100%;
-      height: auto !important;
+      height: auto;
     }
 
     .category-input,
     .tags-input {
-      position: static !important;
-      flex: 1 1 calc(50% - var(--mf-space-1)) !important;
+      flex: 1 1 0 !important;
       width: auto !important;
       max-width: none !important;
       min-width: 0;
@@ -759,13 +770,17 @@
       margin: 0 !important;
     }
 
+    .category-input .select-kit-header,
+    .tags-input .select-kit-header,
+    .tags-input .mini-tag-chooser {
+      min-height: 44px;
+      border-radius: var(--mf-radius-md);
+    }
+
     .title-input {
-      position: static !important;
-      flex: 1 1 100% !important;
-      width: 100% !important;
-      max-width: none !important;
-      height: auto !important;
-      margin: 0 !important;
+      flex: 0 0 auto;
+      width: 100%;
+      margin: 0;
     }
 
     #reply-title {
@@ -776,60 +791,52 @@
       font-size: 17px;
       font-weight: var(--mf-weight-semibold);
       background: transparent !important;
+      border-bottom: 1px solid var(--mf-hairline) !important;
       border-radius: 0;
       box-shadow: none !important;
-      border-bottom: 1px solid var(--mf-hairline) !important;
     }
 
-    .category-input .select-kit-header,
-    .tags-input .select-kit-header,
-    .tags-input .mini-tag-chooser {
-      min-height: 44px;
-      border-radius: var(--mf-radius-md);
-    }
-
-    .d-editor-container,
-    .d-editor {
-      position: relative !important;
-      top: auto !important;
-      inset: auto !important;
+    .d-editor-textarea-column {
       display: flex;
       flex: 1 1 auto;
       flex-direction: column;
       min-height: 0;
-      margin: 0;
     }
 
-    .d-editor {
-      padding: 0 var(--mf-space-3);
-    }
-
-    .d-editor-textarea-wrapper,
-    .d-editor-preview-wrapper {
-      position: relative !important;
-      inset: auto !important;
+    .d-editor-textarea-wrapper {
       display: flex;
       flex: 1 1 auto;
       flex-direction: column;
-      width: 100%;
-      min-height: 120px;
-      margin: 0;
-      overflow: hidden;
+      min-height: 0;
+      padding: 0 var(--mf-space-3);
       background: transparent;
     }
 
-    .d-editor-input {
-      position: static !important;
-      inset: auto !important;
-      box-sizing: border-box;
+    .ProseMirror-container {
+      display: flex;
       flex: 1 1 auto;
-      width: 100% !important;
-      height: auto !important;
-      min-height: 120px;
-      max-height: none;
-      margin: 0;
+      flex-direction: column;
+      min-height: 0;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .ProseMirror {
+      flex: 1 1 auto;
+      min-height: 100%;
+      padding: var(--mf-space-3) 0;
+      font-size: 17px;
+      line-height: 1.5;
+      outline: 0;
+    }
+
+    .d-editor-input {
+      flex: 1 1 auto;
+      box-sizing: border-box;
+      width: 100%;
+      min-height: 0;
       padding: var(--mf-space-3) 0 !important;
-      overflow-x: hidden;
       overflow-y: auto;
       overscroll-behavior: contain;
       font-size: 17px;
@@ -840,10 +847,18 @@
       resize: none;
     }
 
-    .d-editor-button-bar {
+    &.hide-preview .d-editor-preview-wrapper {
+      display: none !important;
+    }
+
+    .composer-footer {
       flex: 0 0 auto;
+      background: var(--mf-surface);
+      border-top: 1px solid var(--mf-hairline);
+    }
+
+    .d-editor-button-bar {
       flex-wrap: nowrap;
-      margin: var(--mf-space-2) 0;
       overflow-x: auto;
       scrollbar-width: none;
 
@@ -853,12 +868,8 @@
     }
 
     .submit-panel {
-      flex: 0 0 auto;
-      margin: 0;
       padding: var(--mf-space-2) var(--mf-space-3)
         calc(var(--mf-space-2) + env(safe-area-inset-bottom));
-      background: var(--mf-surface);
-      border-top: 1px solid var(--mf-hairline);
     }
 
     .save-or-cancel {
@@ -883,8 +894,7 @@
         }
       }
 
-      .discard-button,
-      .cancel {
+      .discard-button {
         flex: 0 0 auto;
         min-height: 46px;
         padding-inline: var(--mf-space-3);
