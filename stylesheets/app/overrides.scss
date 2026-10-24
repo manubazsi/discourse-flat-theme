@@ -1093,25 +1093,6 @@ tr.topic-list-item-separator,
       text-shadow: 0 1px 6px rgb(0 0 0 / 55%);
     }
 
-    .usercard-controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--mf-space-2);
-      margin: var(--mf-space-4) 0 0;
-      padding: 0;
-
-      li {
-        flex: 1 1 calc(50% - var(--mf-space-2));
-        margin: 0;
-      }
-
-      .btn {
-        width: 100%;
-        justify-content: center;
-        margin: 0;
-      }
-    }
-
     .metadata {
       margin-top: var(--mf-space-3);
       gap: 2px var(--mf-space-3);
