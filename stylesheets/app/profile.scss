@@ -709,10 +709,6 @@
   }
 }
 
-// Összecsukott profil (.collapsed-info): a Discourse ilyenkor elrejti a
-// bannert, ezért a bannerhez tartozó negatív avatar-margót, a felső
-// padding hiányát és a min-height-ot vissza kell állítani, különben az
-// avatar kicsúszik a kártyából és üres hely marad alul.
 .user-main > .about.collapsed-info {
   .user-profile-image {
     display: none !important;
