@@ -1046,7 +1046,7 @@ tr.topic-list-item-separator,
     }
 
     .card-row:first-child > * {
-      position: static !important;
+      position: relative !important;
       inset: auto !important;
       transform: none !important;
       translate: none !important;
@@ -1061,7 +1061,7 @@ tr.topic-list-item-separator,
     .card-huge-avatar,
     .card-huge-avatar a,
     .card-huge-avatar .avatar {
-      position: static !important;
+      position: relative !important;
       inset: auto !important;
       top: auto !important;
       transform: none !important;
@@ -1143,7 +1143,7 @@ tr.topic-list-item-separator,
   }
 
   .card-row:first-child > * {
-    position: static;
+    position: relative;
     inset: auto;
     transform: none;
     translate: none;
@@ -1157,7 +1157,7 @@ tr.topic-list-item-separator,
   .card-huge-avatar,
   .card-huge-avatar a,
   .card-huge-avatar .avatar {
-    position: static !important;
+    position: relative !important;
     inset: auto !important;
     top: auto !important;
     transform: none !important;
