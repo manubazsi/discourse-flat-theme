@@ -964,11 +964,6 @@ tr.topic-list-item-separator,
   display: none !important;
 }
 
-// Profilkártya banner: a korábbi `background:` shorthand lenullázta a
-// Discourse `background-size: cover` / `position` értékeit, ezért a banner
-// természetes méretben csempézve látszott, a kártya köré pedig sötét keret
-// került. Itt a banner a teljes kártyát kitölti, a tartalmat pedig egy
-// színátmenetes réteg teszi olvashatóvá.
 #user-card:not(:empty),
 .user-card:not(:empty),
 #group-card:not(:empty),
@@ -995,10 +990,6 @@ tr.topic-list-item-separator,
   }
 }
 
-// Profilkártya – mobil: a banner csak a fejlécsávban látszik, alatta tömör
-// háttér van, hogy a gombok, a metaadatok és a jelvények olvashatók
-// maradjanak; a kártya körüli „gyűrű” és a felesleges belső térközök
-// megszűnnek.
 @include viewport.until(sm) {
   #user-card:not(:empty),
   .user-card:not(:empty) {
@@ -1030,17 +1021,30 @@ tr.topic-list-item-separator,
       border-radius: inherit;
       background: linear-gradient(
         to bottom,
-        color-mix(in srgb, var(--secondary) 20%, transparent) 0,
-        color-mix(in srgb, var(--secondary) 35%, transparent) 84px,
-        var(--secondary) 128px
+        color-mix(in srgb, var(--secondary) 10%, transparent) 0%,
+        color-mix(in srgb, var(--secondary) 24%, transparent) 20%,
+        color-mix(in srgb, var(--secondary) 46%, transparent) 40%,
+        color-mix(in srgb, var(--secondary) 70%, transparent) 60%,
+        color-mix(in srgb, var(--secondary) 88%, transparent) 80%,
+        var(--secondary) 100%
       ) !important;
     }
 
     .card-row:first-child {
       align-items: center;
       gap: var(--mf-space-3);
-      min-height: 84px;
+      min-height: 72px;
+      margin: 0;
       padding: 0;
+    }
+
+    .user-card-avatar,
+    .card-huge-avatar {
+      position: static !important;
+      inset: auto !important;
+      transform: none !important;
+      margin: 0 !important;
+      flex: 0 0 auto;
     }
 
     .user-card-avatar .avatar,
@@ -1064,7 +1068,7 @@ tr.topic-list-item-separator,
       display: flex;
       flex-wrap: wrap;
       gap: var(--mf-space-2);
-      margin: var(--mf-space-3) 0 0;
+      margin: var(--mf-space-4) 0 0;
       padding: 0;
 
       li {
