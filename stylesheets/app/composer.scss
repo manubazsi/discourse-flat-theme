@@ -630,3 +630,15 @@
     }
   }
 }
+
+@include viewport.from(md) {
+  #reply-control.open {
+    left: 0 !important;
+    right: 0 !important;
+    box-sizing: border-box;
+    width: min(var(--mf-content-width), calc(100vw - 32px)) !important;
+    max-width: calc(100vw - 32px) !important;
+    margin-inline: auto !important;
+    transform: none;
+  }
+}
