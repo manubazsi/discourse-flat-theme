@@ -739,6 +739,9 @@
       flex: 1 1 auto;
       flex-direction: column;
       min-height: 0;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
     }
 
     .composer-fields {
@@ -798,9 +801,9 @@
 
     .d-editor-textarea-column {
       display: flex;
-      flex: 1 1 auto;
+      flex: 1 0 160px;
       flex-direction: column;
-      min-height: 0;
+      min-height: 160px;
     }
 
     .d-editor-textarea-wrapper {
