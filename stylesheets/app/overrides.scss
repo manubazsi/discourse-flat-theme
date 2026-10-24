@@ -964,6 +964,11 @@ tr.topic-list-item-separator,
   display: none !important;
 }
 
+// Profilkártya banner: a korábbi `background:` shorthand lenullázta a
+// Discourse `background-size: cover` / `position` értékeit, ezért a banner
+// természetes méretben csempézve látszott, a kártya köré pedig sötét keret
+// került. Itt a banner a teljes kártyát kitölti, a tartalmat pedig egy
+// színátmenetes réteg teszi olvashatóvá.
 #user-card:not(:empty),
 .user-card:not(:empty),
 #group-card:not(:empty),
@@ -987,5 +992,104 @@ tr.topic-list-item-separator,
 
   .card-row:first-child {
     padding-top: var(--mf-space-4);
+  }
+}
+
+// Profilkártya – mobil: a banner csak a fejlécsávban látszik, alatta tömör
+// háttér van, hogy a gombok, a metaadatok és a jelvények olvashatók
+// maradjanak; a kártya körüli „gyűrű” és a felesleges belső térközök
+// megszűnnek.
+@include viewport.until(sm) {
+  #user-card:not(:empty),
+  .user-card:not(:empty) {
+    box-sizing: border-box;
+    width: calc(100vw - 24px) !important;
+    max-width: calc(100vw - 24px) !important;
+    margin: 0 auto;
+    padding: 0 !important;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    background-position: center top;
+    background-size: cover;
+    overflow: hidden;
+
+    &::before,
+    &::after {
+      content: none !important;
+    }
+
+    .card-content {
+      position: relative;
+      box-sizing: border-box;
+      width: 100% !important;
+      max-width: 100%;
+      margin: 0 !important;
+      padding: var(--mf-space-4) !important;
+      border: 0 !important;
+      border-radius: inherit;
+      background: linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--secondary) 20%, transparent) 0,
+        color-mix(in srgb, var(--secondary) 35%, transparent) 84px,
+        var(--secondary) 128px
+      ) !important;
+    }
+
+    .card-row:first-child {
+      align-items: center;
+      gap: var(--mf-space-3);
+      min-height: 84px;
+      padding: 0;
+    }
+
+    .user-card-avatar .avatar,
+    .card-huge-avatar .avatar {
+      width: 64px;
+      height: 64px;
+    }
+
+    .card-row .names h1,
+    .card-row .names .username {
+      font-size: var(--mf-text-xl);
+      text-shadow: 0 1px 6px rgb(0 0 0 / 55%);
+    }
+
+    .card-row .names .user-title,
+    .card-row .names .user-card-fullname {
+      text-shadow: 0 1px 6px rgb(0 0 0 / 55%);
+    }
+
+    .usercard-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--mf-space-2);
+      margin: var(--mf-space-3) 0 0;
+      padding: 0;
+
+      li {
+        flex: 1 1 calc(50% - var(--mf-space-2));
+        margin: 0;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+        margin: 0;
+      }
+    }
+
+    .metadata {
+      margin-top: var(--mf-space-3);
+      gap: 2px var(--mf-space-3);
+      font-size: var(--mf-text-sm);
+    }
+
+    .badge-section,
+    .user-card-badges {
+      flex-wrap: wrap;
+      row-gap: 6px;
+      margin-top: var(--mf-space-3);
+    }
   }
 }
