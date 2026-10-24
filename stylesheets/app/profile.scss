@@ -708,3 +708,67 @@
     grid-column: 1 / -1;
   }
 }
+
+// Összecsukott profil (.collapsed-info): a Discourse ilyenkor elrejti a
+// bannert, ezért a bannerhez tartozó negatív avatar-margót, a felső
+// padding hiányát és a min-height-ot vissza kell állítani, különben az
+// avatar kicsúszik a kártyából és üres hely marad alul.
+.user-main > .about.collapsed-info {
+  .user-profile-image {
+    display: none !important;
+  }
+
+  .details,
+  .details:has(.primary) {
+    padding: var(--mf-space-4) var(--mf-space-5) !important;
+  }
+
+  .details .primary {
+    align-items: center;
+    min-height: 0;
+    padding-top: 0;
+  }
+
+  &.has-background .user-profile-avatar,
+  .user-profile-avatar {
+    align-self: center;
+    margin-top: 0 !important;
+  }
+
+  .user-profile-avatar .avatar {
+    width: 48px;
+    height: 48px;
+    border-width: 0 !important;
+  }
+
+  .primary-textual {
+    padding: 0 !important;
+  }
+
+  .user-profile-names .username {
+    font-size: var(--mf-text-xl);
+  }
+
+  .user-title,
+  .bio,
+  .user-profile__bio,
+  .secondary {
+    display: none !important;
+  }
+
+  .details .controls {
+    align-self: center;
+    padding-top: 0;
+  }
+
+  @include viewport.until(md) {
+    .details,
+    .details:has(.primary) {
+      padding: var(--mf-space-3) var(--mf-space-4) !important;
+    }
+
+    .details .primary {
+      grid-template-columns: 48px minmax(0, 1fr);
+    }
+  }
+}
