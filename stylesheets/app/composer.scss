@@ -694,13 +694,37 @@
     box-sizing: border-box;
     padding: 0 !important;
     overflow: hidden;
+    background: var(--mf-surface);
+
+    .grippie {
+      display: none !important;
+    }
+
+    :is(
+        :has(> .composer-fields),
+        :has(> .d-editor-container),
+        :has(> .d-editor),
+        :has(> .submit-panel)
+      ) {
+      display: flex !important;
+      flex-direction: column;
+      flex: 1 1 auto;
+      min-height: 0;
+      padding: 0 !important;
+    }
 
     .reply-to {
       flex: 0 0 auto;
-      min-height: 44px;
+      min-height: 52px;
       margin: 0;
       padding: 0 var(--mf-space-3);
       border-bottom: 1px solid var(--mf-hairline);
+    }
+
+    .composer-action-title,
+    .action-title {
+      font-size: var(--mf-text-base);
+      font-weight: var(--mf-weight-semibold);
     }
 
     .composer-fields {
@@ -710,38 +734,51 @@
       min-height: 0;
       max-height: none !important;
       margin: 0;
-      padding: var(--mf-space-2) var(--mf-space-3) 0;
+      padding: var(--mf-space-3) var(--mf-space-3) 0;
       overflow: visible;
     }
 
     .title-and-category {
       position: static !important;
       display: flex !important;
-      flex-direction: column;
+      flex-flow: row wrap;
       gap: var(--mf-space-2);
       width: 100%;
       height: auto !important;
     }
 
-    .title-and-category > *,
     .category-input,
-    .tags-input,
-    .title-input {
+    .tags-input {
       position: static !important;
-      flex: 0 0 auto !important;
-      width: 100% !important;
+      flex: 1 1 calc(50% - var(--mf-space-1)) !important;
+      width: auto !important;
       max-width: none !important;
+      min-width: 0;
       height: auto !important;
       min-height: 44px;
       margin: 0 !important;
     }
 
+    .title-input {
+      position: static !important;
+      flex: 1 1 100% !important;
+      width: 100% !important;
+      max-width: none !important;
+      height: auto !important;
+      margin: 0 !important;
+    }
+
     #reply-title {
-      height: 44px;
+      width: 100%;
+      height: 48px;
       margin: 0;
       padding: 0 var(--mf-space-3);
-      font-size: 16px;
-      border-radius: var(--mf-radius-md);
+      font-size: 17px;
+      font-weight: var(--mf-weight-semibold);
+      background: transparent !important;
+      border-radius: 0;
+      box-shadow: none !important;
+      border-bottom: 1px solid var(--mf-hairline) !important;
     }
 
     .category-input .select-kit-header,
@@ -764,25 +801,29 @@
     }
 
     .d-editor {
-      padding: var(--mf-space-2) var(--mf-space-3) 0;
+      padding: 0 var(--mf-space-3);
     }
 
     .d-editor-textarea-wrapper {
       flex: 1 1 auto;
-      min-height: 140px;
-      border-radius: var(--mf-radius-md);
+      min-height: 120px;
+      background: transparent;
     }
 
     .d-editor-input {
-      min-height: 140px;
-      padding: var(--mf-space-3) !important;
-      border-radius: var(--mf-radius-md);
+      min-height: 120px;
+      padding: var(--mf-space-3) 0 !important;
+      font-size: 17px;
+      line-height: 1.5;
+      background: transparent !important;
+      border-radius: 0;
+      box-shadow: none !important;
     }
 
     .d-editor-button-bar {
       flex: 0 0 auto;
       flex-wrap: nowrap;
-      margin-top: var(--mf-space-2);
+      margin: var(--mf-space-2) 0;
       overflow-x: auto;
       scrollbar-width: none;
 
@@ -802,7 +843,7 @@
 
     .save-or-cancel {
       display: flex;
-      flex-direction: row-reverse;
+      flex-direction: row;
       align-items: center;
       gap: var(--mf-space-2);
       width: 100%;
@@ -810,11 +851,11 @@
       .btn-primary.create {
         flex: 1 1 auto;
         justify-content: center;
-        min-height: 44px;
+        min-height: 46px;
         color: var(--mf-accent-fg);
         font-size: var(--mf-text-base);
         background: var(--mf-accent) !important;
-        border-radius: var(--mf-radius-md);
+        border-radius: var(--mf-radius-lg);
 
         .d-icon,
         .d-button-label {
@@ -825,7 +866,7 @@
       .discard-button,
       .cancel {
         flex: 0 0 auto;
-        min-height: 44px;
+        min-height: 46px;
         padding-inline: var(--mf-space-3);
       }
     }
